@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hexys - Clash Royale Tournament</title>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="logo-hexys.jpg" type="image/jpg">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo-hexys.jpg" alt="Logo Hexys" class="logo-header">
+            <h1 class="team-name">HEXYS</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#evento">Evento</a></li>
+                <li><a href="#noticias">Notícias</a></li>
+                <li><a href="#agenda">Agenda</a></li>
+                <li><a href="#loja">Loja</a></li>
+                <li><a href="#transmissao">Live</a></li>
+                <li><a href="#cadastro" class="btn-inscricao">Inscreva-se!</a></li>
+                <li><a href="#login" class="btn-login">Login</a></li>
+            </ul>
+        </nav>
+        <button class="menu-toggle" id="menu-toggle">☰</button>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h2>O BRILHO DA COROA ESPERA POR VOCÊ.</h2>
+                <p>Evento esportes- Batalhe pela glória.</p>
+                <a href="#evento" class="cta-button">Ver Detalhes do Evento</a>
+            </div>
+            </section>
+
+       <section id="evento" class="info-section">
+            <h3>SOBRE O EVENTO</h3>
+            <div class="cards-container">
+                <div class="info-card">
+                    <h4>Modalidades</h4>
+                    <p>Clash Royale (melhor de 3) - Counter-Strike (saldo de rounds) - (Valorant saldo de rounds)</p>
+                </div>
+                <div class="info-card">
+                    <h4>Data</h4>
+                    <p>25 a 27 de Novembro</p>
+                </div>
+                <div class="info-card">
+                    <h4>Prêmio Total</h4>
+                    <p>10 pontos extras na matéria de Matheus</p>
+                </div>
+            </div>
+    </section>
+
+    <section id="noticias" class="news-section">
+        <h3>ÚLTIMAS NOTÍCIAS</h3>
+        <div class="news-grid">
+            <div class="news-card">
+                <h4>Hexys Anuncia Nova Lineup de Valorant</h4>
+                <p>A equipe de Valorant da Hexys se reformula para a próxima temporada, trazendo três novos talentos...</p>
+                <a href="#">Ler mais »</a>
+            </div>
+            <div class="news-card">
+                <h4>Agenda Confirmada para as Finais de Clash Royale</h4>
+                <p>Confira as datas e horários dos confrontos decisivos do torneio. Quem levará a coroa?</p>
+                <a href="#">Ler mais »</a>
+            </div>
+            <div class="news-card">
+                <h4>Patrocínio Fechado com Gigante de Tecnologia</h4>
+                <p>Um novo parceiro de peso se junta à Hexys, impulsionando a equipe para novos horizontes...</p>
+                <a href="#">Ler mais »</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="agenda" class="agenda-section">
+            <h3>AGENDA DO TORNEIO</h3>
+            <ul id="match-list">
+        </ul>
+        <p class="crud-note">**CRUD de Partidas: (Funcionalidade de back-end: O administrador adiciona, edita ou deleta partidas aqui.)**</p>
+    </section>
+
+    <section id="loja" class="store-section info-section">
+        <h3>LOJA OFICIAL</h3>
+        <div class="product-catalog cards-container">
+            <div class="info-card product-card">
+                <h4>Camisa Oficial Pro - 2025</h4>
+                <p>R$ 149,90</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            <div class="info-card product-card">
+                <h4>Mousepad Hexys Neon</h4>
+                <p>R$ 79,90</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            <div class="info-card product-card">
+                <h4>Moletom Team Edition</h4>
+                <p>R$ 229,90</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+        <div class="cart-placeholder">
+            <h4>Carrinho (Apenas Placeholder)</h4>
+            <p>0 itens | Total: R$ 0,00</p>
+            <p class="crud-note">**Catálogo/Carrinho: (Funcionalidade de back-end: Controle de estoque e processamento de pagamento.)**</p>
+        </div>
+    </section>
+
+    <section id="transmissao" class="live-section">
+        <h3>TRANSMISSÃO AO VIVO</h3>
+        <div class="live-stream-container">
+            <div class="video-placeholder">
+                <p>LIVE OFFLINE | Próxima Transmissão: 25/11 às 18:00 BRT</p>
+            </div>
+        </div>
+        <p class="crud-note">**Integração: (Requer API de streaming para exibir o player em tempo real.)**</p>
+    </section>
+
+    <section id="cadastro" class="auth-section">
+        <h3>CRIE SUA CONTA</h3>
+        <form class="auth-form">
+            <input type="text" placeholder="Nome de Usuário" required>
+            <input type="email" placeholder="E-mail" required>
+            <input type="password" placeholder="Senha" required>
+            <button type="submit" class="cta-button">Cadastrar</button>
+        </form>
+        <p>Já tem uma conta? <a href="#login">Faça Login</a></p>
+        <p class="crud-note">**Hash de Senhas: (Funcionalidade de back-end: O hash é feito no servidor para segurança.)**</p>
+    </section>
+
+    <section id="login" class="auth-section">
+        <h3>LOGIN</h3>
+        <form class="auth-form">
+            <input type="text" placeholder="Nome de Usuário ou E-mail" required>
+            <input type="password" placeholder="Senha" required>
+            <button type="submit" class="cta-button">Entrar</button>
+        </form>
+        <p>Esqueceu sua senha? | Não tem conta? <a href="#cadastro">Cadastre-se</a></p>
+    </section>
+
+</main>
+
+<footer>
+        <p>&copy; 2025 Hexys e-Sports Todos os direitos reservados.</p>
+        <p>Desenvolvido com 💛 por Radla Laysla</p>
+</footer>
+
+<script src="script2.js"></script>
+</body>
+</html>
