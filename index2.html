@@ -20,10 +20,10 @@
                 <li><a href="#evento">Evento</a></li>
                 <li><a href="#noticias">Notícias</a></li>
                 <li><a href="#agenda">Agenda</a></li>
-                <li><a href="#loja">Loja</a></li>
+                <li><a href="lojaoficial.html">Loja</a></li>
                 <li><a href="#transmissao">Live</a></li>
-                <li><a href="#cadastro" class="btn-inscricao">Inscreva-se!</a></li>
-                <li><a href="#login" class="btn-login">Login</a></li>
+                <li><a href="paginacadastro.html" class="btn-inscricao">Inscreva-se!</a></li>
+                <li><a href="paginalogin.html" class="btn-login">Login</a></li>
             </ul>
         </nav>
         <button class="menu-toggle" id="menu-toggle">☰</button>
@@ -84,32 +84,6 @@
         <p class="crud-note">**CRUD de Partidas: (Funcionalidade de back-end: O administrador adiciona, edita ou deleta partidas aqui.)**</p>
     </section>
 
-    <section id="loja" class="store-section info-section">
-        <h3>LOJA OFICIAL</h3>
-        <div class="product-catalog cards-container">
-            <div class="info-card product-card">
-                <h4>Camisa Oficial Pro - 2025</h4>
-                <p>R$ 149,90</p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-            <div class="info-card product-card">
-                <h4>Mousepad Hexys Neon</h4>
-                <p>R$ 79,90</p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-            <div class="info-card product-card">
-                <h4>Moletom Team Edition</h4>
-                <p>R$ 229,90</p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-        </div>
-        <div class="cart-placeholder">
-            <h4>Carrinho (Apenas Placeholder)</h4>
-            <p>0 itens | Total: R$ 0,00</p>
-            <p class="crud-note">**Catálogo/Carrinho: (Funcionalidade de back-end: Controle de estoque e processamento de pagamento.)**</p>
-        </div>
-    </section>
-
     <section id="transmissao" class="live-section">
         <h3>TRANSMISSÃO AO VIVO</h3>
         <div class="live-stream-container">
@@ -118,28 +92,6 @@
             </div>
         </div>
         <p class="crud-note">**Integração: (Requer API de streaming para exibir o player em tempo real.)**</p>
-    </section>
-
-    <section id="cadastro" class="auth-section">
-        <h3>CRIE SUA CONTA</h3>
-        <form class="auth-form">
-            <input type="text" placeholder="Nome de Usuário" required>
-            <input type="email" placeholder="E-mail" required>
-            <input type="password" placeholder="Senha" required>
-            <button type="submit" class="cta-button">Cadastrar</button>
-        </form>
-        <p>Já tem uma conta? <a href="#login">Faça Login</a></p>
-        <p class="crud-note">**Hash de Senhas: (Funcionalidade de back-end: O hash é feito no servidor para segurança.)**</p>
-    </section>
-
-    <section id="login" class="auth-section">
-        <h3>LOGIN</h3>
-        <form class="auth-form">
-            <input type="text" placeholder="Nome de Usuário ou E-mail" required>
-            <input type="password" placeholder="Senha" required>
-            <button type="submit" class="cta-button">Entrar</button>
-        </form>
-        <p>Esqueceu sua senha? | Não tem conta? <a href="#cadastro">Cadastre-se</a></p>
     </section>
 
 </main>
