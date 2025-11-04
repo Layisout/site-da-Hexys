@@ -1,261 +1,550 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hexys - Clash Royale Tournament</title>
-<link rel="stylesheet" href="styles.css"> <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="icon" href="logo-hexys.jpg" type="image/jpg">
-<script src="js/script2.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexys - Loja Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo-hexys.jpg" type="image/jpg">
+
+    <style>
+        /* Variáveis de Cor, Fontes e Base - CONSISTENTES COM SEU ARQUIVO CSS */
+        :root {
+            --color-background: #000000;
+            --color-neon-yellow: #FFCC00;
+            --color-white: #FFFFFF;
+            --color-dark-gray: #111111;
+            --color-detail-yellow: #C99A00;
+            --font-family: 'Roboto', sans-serif;
+        }
+
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-white);
+            font-family: var(--font-family);
+            line-height: 1.6;
+        }
+
+        /* Header (Estilo LOUD: Minimalista, com logo e navegação clara) */
+        header {
+            background-color: var(--color-background);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            border-bottom: 2px solid var(--color-detail-yellow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-header {
+            height: 40px;
+            margin-right: 15px;
+            filter: drop-shadow(0 0 5px var(--color-neon-yellow));
+            border-radius: 50%; /* Adicionado para a logo */
+        }
+
+        .team-name {
+            font-size: 1.5em;
+            font-weight: 900;
+            color: var(--color-white);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center; /* Alinha o carrinho e botões verticalmente */
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--color-white);
+            font-weight: 700;
+            transition: color 0.3s, border-bottom 0.3s;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            display: inline-block; /* Garante que o padding funcione */
+        }
+
+        nav ul li a:hover {
+            color: var(--color-neon-yellow);
+            border-bottom: 2px solid var(--color-neon-yellow);
+        }
+
+        /* Estilo Específico do Link do Carrinho e Contador */
+        #nav-cart-btn {
+            padding: 8px 0; /* Padding sutil para ser clicável */
+        }
+        
+        #header-cart-count {
+            color: var(--color-neon-yellow);
+            font-weight: 900;
+            margin-left: 5px;
+        }
+
+        .btn-inscricao, .btn-login {
+            background-color: var(--color-neon-yellow);
+            color: var(--color-background) !important;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 900 !important;
+            border: none !important;
+            margin-left: 10px;
+            white-space: nowrap; /* Impede quebras de linha */
+        }
+
+        .btn-login {
+            background-color: var(--color-dark-gray);
+            color: var(--color-neon-yellow) !important;
+            border: 1px solid var(--color-neon-yellow) !important;
+        }
+
+        .btn-inscricao:hover {
+            background-color: var(--color-white);
+            color: var(--color-background) !important;
+        }
+
+        .btn-login:hover {
+            background-color: var(--color-neon-yellow);
+            color: var(--color-background) !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-white);
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* --- Estilos da Loja e Produtos --- */
+        main {
+            padding: 0;
+            max-width: 1200px; /* Limite de largura para o conteúdo */
+            margin: 0 auto;
+        }
+
+        .store-section {
+            padding: 50px 5%;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--color-detail-yellow);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5em;
+            font-weight: 900;
+            color: var(--color-neon-yellow);
+        }
+
+        .view-cart-btn {
+            background-color: var(--color-dark-gray);
+            color: var(--color-neon-yellow);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid var(--color-detail-yellow);
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .view-cart-btn:hover {
+            background-color: var(--color-background);
+        }
+
+        #btn-total-items {
+            background-color: var(--color-neon-yellow);
+            color: var(--color-background);
+            font-weight: 900;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8em;
+        }
+
+
+        /* Catálogo de Produtos (Grid) */
+        .product-catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsivo por padrão */
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--color-dark-gray);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            border: 1px solid var(--color-dark-gray);
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: var(--color-neon-yellow);
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h4 {
+            color: var(--color-neon-yellow);
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .product-card p {
+            font-size: 0.9em;
+            color: #CCCCCC;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 1.5em;
+            font-weight: 900;
+            color: var(--color-white);
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--color-neon-yellow);
+            color: var(--color-background);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 900;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--color-white);
+        }
+
+        /* Footer - Mantenha o estilo do seu CSS */
+        footer {
+            background-color: var(--color-dark-gray);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8em;
+            border-top: 1px solid var(--color-detail-yellow);
+        }
+
+
+        /* Responsividade (Mobile) - Ajustado para usar sua lógica de .open */
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 5%; /* Menos padding vertical em mobile */
+            }
+
+            /* Oculta o menu de desktop e mostra o toggle */
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--color-dark-gray);
+                position: absolute;
+                top: 60px; /* Ajustado para a nova altura do header */
+                left: 0;
+                padding: 10px 0;
+                border-top: 1px solid var(--color-detail-yellow);
+            }
+
+            /* Mostra o menu quando aberto, conforme sua classe */
+            nav ul.open {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                padding: 10px 0;
+                border-bottom: none;
+            }
+
+            .btn-inscricao, .btn-login {
+                display: block; /* Ocupa a largura total no menu mobile */
+                width: 80%;
+                margin: 10px auto;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+
+            /* Ajuste da seção da Loja */
+            .section-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .section-header h2 {
+                font-size: 2em;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- 1. HEADER (Cabeçalho Fixo - USANDO APENAS SEU CSS) -->
     <header>
         <div class="logo-container">
             <img src="logo-hexys.jpg" alt="Logo Hexys" class="logo-header">
             <h1 class="team-name">HEXYS</h1>
         </div>
+
         <nav>
             <ul>
+                <!-- Note: Se o arquivo principal for index.html, ajuste o link de "Início" -->
                 <li><a href="index2.html">Início</a></li>
                 <li><a href="#evento">Evento</a></li>
                 <li><a href="#noticias">Notícias</a></li>
                 <li><a href="#agenda">Agenda</a></li>
-                <li><a href="#loja">Loja</a></li>
+                <li><a href="lojaoficial.html" style="color: var(--color-neon-yellow); border-bottom: 2px solid var(--color-neon-yellow);">Loja</a></li>
                 <li><a href="#transmissao">Live</a></li>
-                <li><a href="paginacadastro.html" class="btn-inscricao">Inscreva-se!</a></li>
-                <li><a href="paginalogin.html" class="btn-login">Login</a></li>
-                
+
+                <!-- Botão do Carrinho (com contador) -->
                 <li>
-                    <a href="#loja" id="nav-cart-btn" class="nav-cart-icon" title="Ver Carrinho">
+                    <a href="carrinho.html" id="nav-cart-btn" title="Ver Carrinho">
                         🛒 (<span id="header-cart-count">0</span>)
                     </a>
                 </li>
                 
+                <!-- Botões de Ação -->
                 <li><a href="paginacadastro.html" class="btn-inscricao">Inscreva-se!</a></li>
                 <li><a href="paginalogin.html" class="btn-login">Login</a></li>
             </ul>
         </nav>
+        
+        <!-- Mobile Menu Toggle -->
         <button class="menu-toggle" id="menu-toggle">☰</button>
     </header>
 
-            <main>
-                <section id="loja" class="store-section info-section">
-                    <div class="store-header-controls">
-                        <h3>LOJA OFICIAL</h3>
-                        <button id="view-cart-btn" class="view-cart-btn">
-                            Ver Carrinho (<span id="btn-total-items">0</span>)
-                        </button>
-                    </div>
+    <!-- 2. CONTEÚDO PRINCIPAL (LOJA) -->
+    <main>
+        <section id="loja" class="store-section">
+            
+            <!-- Título e Botão de Carrinho (Topo da Seção) -->
+            <div class="section-header">
+                <h2>LOJA OFICIAL HEXYS</h2>
+                
+                <a href="carrinho.html" id="view-cart-btn" class="view-cart-btn">
+                    <span>🛒 Ir para o Carrinho</span>
+                    <span id="btn-total-items">0</span>
+                </a>
+            </div>
+            
+            <!-- Catálogo de Produtos (GRID RESPONSIVO) -->
+            <div class="product-catalog">
+                
+                <!-- Produto 1: Camisa Oficial Pro -->
+                <div class="product-card">
+                    <img src="https://placehold.co/300x200/000000/FFCC00?text=CAMISA+PRO" alt="Camisa Oficial Pro - 2025" class="product-image">
                     
-                    <div class="product-catalog cards-container">
-                        <div class="info-card product-card">
-                            <h4>Camisa Oficial Pro - 2025</h4>
-                            <p>R$ 149,90</p>
-                            <button class="add-to-cart">Adicionar ao Carrinho</button>
-                        </div>
-                        <div class="info-card product-card">
-                            <h4>Mousepad Hexys Neon</h4>
-                            <p>R$ 79,90</p>
-                            <button class="add-to-cart">Adicionar ao Carrinho</button>
-                        </div>
-                        <div class="info-card product-card">
-                            <h4>Moletom Team Edition</h4>
-                            <p>R$ 229,90</p>
-                            <button class="add-to-cart">Adicionar ao Carrinho</button>
-                        </div>
-                    </div>
-                    </section>
-            </main>
+                    <h4 class="product-title">Camisa Oficial Pro - 2025</h4>
+                    <p class="product-description">Tecnologia Dry-Fit, design exclusivo do time e símbolo bordado.</p>
+                    <p class="product-price">R$ 149,90</p>
+                    
+                    <button data-product-index="0" class="add-to-cart">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+
+                <!-- Produto 2: Mousepad Hexys Neon -->
+                <div class="product-card">
+                    <img src="https://placehold.co/300x200/000000/FFCC00?text=MOUSEPAD" alt="Mousepad Hexys Neon" class="product-image">
+                    
+                    <h4 class="product-title">Mousepad Hexys Neon</h4>
+                    <p class="product-description">Base antiderrapante e acabamento de alta precisão para eSports.</p>
+                    <p class="product-price">R$ 79,90</p>
+                    
+                    <button data-product-index="1" class="add-to-cart">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+
+                <!-- Produto 3: Moletom Team Edition -->
+                <div class="product-card">
+                    <img src="https://placehold.co/300x200/000000/FFCC00?text=MOLETOM" alt="Moletom Team Edition" class="product-image">
+                    
+                    <h4 class="product-title">Moletom Team Edition</h4>
+                    <p class="product-description">Conforto premium, ideal para climas frios e logo em relevo.</p>
+                    <p class="product-price">R$ 229,90</p>
+                    
+                    <button data-product-index="2" class="add-to-cart">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+                
+                <!-- Produto 4: Boné Oficial Hexys -->
+                <div class="product-card">
+                    <img src="https://placehold.co/300x200/000000/FFCC00?text=BONE" alt="Boné Oficial Hexys" class="product-image">
+                    
+                    <h4 class="product-title">Boné Oficial Hexys</h4>
+                    <p class="product-description">Aba curva, ajustável e logo da equipe bordado na frente.</p>
+                    <p class="product-price">R$ 89,90</p>
+                    
+                    <button data-product-index="3" class="add-to-cart">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+                
+            </div>
+            <!-- Fim do Catálogo -->
+            
+        </section>
+    </main>
     
+    <!-- 3. FOOTER -->
+    <footer>
+        <p>&copy; 2025 Hexys e-Sports - Loja Oficial</p>
+    </footer>
+
+    <!-- 4. SCRIPT JAVASCRIPT (LÓGICA DO CARRINHO E UI) -->
     <script>
         // O nome da chave que o carrinho usará no LocalStorage
-const CART_STORAGE_KEY = 'hexysCart';
+        const CART_STORAGE_KEY = 'hexysCart';
 
-// Estado inicial do carrinho: Tenta carregar do LocalStorage ou inicia vazio
-let cart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || [];
+        // Estado inicial do carrinho: Tenta carregar do LocalStorage ou inicia vazio
+        let cart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || [];
 
-// Função para salvar o estado atual do carrinho no LocalStorage
-const saveCart = () => {
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
-};
+        // Mapeamento dos produtos disponíveis na loja
+        const availableProducts = [
+            { name: "Camisa Oficial Pro - 2025", price: 149.90, img: "https://placehold.co/300x200/000000/FFCC00?text=CAMISA+PRO" },
+            { name: "Mousepad Hexys Neon", price: 79.90, img: "https://placehold.co/300x200/000000/FFCC00?text=MOUSEPAD" },
+            { name: "Moletom Team Edition", price: 229.90, img: "https://placehold.co/300x200/000000/FFCC00?text=MOLETOM" },
+            { name: "Boné Oficial Hexys", price: 89.90, img: "https://placehold.co/300x200/000000/FFCC00?text=BONE" }
+        ];
 
-// Função para formatar o preço em moeda BRL (Reais)
-const formatPrice = (price) => {
-    return price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-};
+        // --- Funções de Utilidade ---
 
-// Mapeamento dos produtos disponíveis na loja (Deve ser o mesmo em todas as páginas)
-const availableProducts = [
-    { name: "Camisa Oficial Pro - 2025", price: 149.90 },
-    { name: "Mousepad Hexys Neon", price: 79.90 },
-    { name: "Moletom Team Edition", price: 229.90 }
-];
+        const saveCart = () => {
+            localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+        };
 
-// --- Funções de Renderização e Atualização ---
+        // --- Funções de Renderização e Atualização ---
 
-/**
- * Atualiza toda a interface do carrinho (lista de itens, resumo e contadores de botões).
- */
-const updateCartUI = () => {
-    // Estas variáveis só existem se estivermos na página de carrinho ou loja, respectivamente.
-    const cartItemsContainer = document.getElementById('cart-items');
-    const cartTotalElement = document.getElementById('cart-total');
-    const totalItemsElement = document.getElementById('total-items');
-    const checkoutButton = document.getElementById('checkout-btn');
-    const btnTotalItemsElement = document.getElementById('btn-total-items'); 
-    const headerCartCount = document.getElementById('header-cart-count'); 
-    
-    let total = 0;
-    let totalItems = 0;
-    
-    // 1. Calcular totais
-    cart.forEach(item => {
-        total += item.price * item.quantity;
-        totalItems += item.quantity;
-    });
-
-    // 2. Atualizar contadores em ambas as páginas
-    if (btnTotalItemsElement) {
-        btnTotalItemsElement.textContent = totalItems;
-    }
-    if (headerCartCount) {
-        headerCartCount.textContent = totalItems;
-    }
-
-    // 3. Renderizar a lista de itens (APENAS SE O CONTAINER EXISTIR - Ex: em carrinho.html)
-    if (cartItemsContainer) {
-        cartItemsContainer.innerHTML = ''; // Limpa os itens atuais
-
-        if (cart.length === 0) {
-            cartItemsContainer.innerHTML = '<p class="empty-cart-message">Seu carrinho está vazio.</p>';
-            if (checkoutButton) checkoutButton.disabled = true;
-        } else {
-            cart.forEach((item, index) => {
-                const itemTotal = item.price * item.quantity;
-                const cartItemDiv = document.createElement('div');
-                cartItemDiv.classList.add('cart-item');
-                cartItemDiv.innerHTML = `
-                    <span class="item-name">${item.name}</span>
-                    <div class="item-controls">
-                        <button class="quantity-btn" data-index="${index}" data-action="decrement">-</button>
-                        <span class="item-quantity">${item.quantity}</span>
-                        <button class="quantity-btn" data-index="${index}" data-action="increment">+</button>
-                        <span class="item-price">${formatPrice(itemTotal)}</span>
-                        <button class="remove-btn" data-index="${index}">Remover</button>
-                    </div>
-                `;
-                cartItemsContainer.appendChild(cartItemDiv);
-            });
-            if (checkoutButton) checkoutButton.disabled = false;
-        }
-
-        // Atualiza o resumo (APENAS SE OS ELEMENTOS EXISTIREM)
-        if (cartTotalElement) cartTotalElement.textContent = formatPrice(total);
-        if (totalItemsElement) totalItemsElement.textContent = totalItems;
-    }
-};
-
-// --- Funções de Manipulação do Carrinho ---
-
-const addToCart = (product) => {
-    const existingItem = cart.find(item => item.name === product.name);
-
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push({ ...product, quantity: 1 }); 
-    }
-    
-    saveCart();
-    updateCartUI();
-};
-
-const updateQuantity = (index, action) => {
-    if (action === 'increment') {
-        cart[index].quantity += 1;
-    } else if (action === 'decrement') {
-        cart[index].quantity -= 1;
-        if (cart[index].quantity <= 0) {
-            cart.splice(index, 1);
-        }
-    }
-    saveCart();
-    updateCartUI();
-};
-
-const removeItem = (index) => {
-    cart.splice(index, 1);
-    saveCart();
-    updateCartUI();
-};
-
-// --- Configuração de Eventos ---
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Eventos de adição de produtos (SÓ EXISTEM EM lojaoficial.html)
-    const addButtons = document.querySelectorAll('.add-to-cart');
-    addButtons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            const product = availableProducts[index]; 
-            addToCart(product);
-        });
-    });
-
-    // Eventos de manipulação de quantidade/remoção (SÓ EXISTEM EM carrinho.html)
-    const cartItemsContainer = document.getElementById('cart-items');
-    if (cartItemsContainer) {
-        cartItemsContainer.addEventListener('click', (event) => {
-            const target = event.target;
-            const index = target.dataset.index;
-
-            if (target.classList.contains('quantity-btn')) {
-                const action = target.dataset.action;
-                if (index !== undefined && action) {
-                    updateQuantity(parseInt(index), action);
-                }
-            } else if (target.classList.contains('remove-btn')) {
-                if (index !== undefined) {
-                    removeItem(parseInt(index));
-                }
-            }
-        });
-    }
-
-    // Evento Finalizar Compra (SÓ EXISTE EM carrinho.html)
-    const checkoutButton = document.getElementById('checkout-btn');
-    if(checkoutButton) {
-        checkoutButton.addEventListener('click', () => {
-            const totalText = document.getElementById('cart-total').textContent;
-            alert(`✅ Finalização de Compra Simulada:\nObrigado! Seu pedido no valor de ${totalText} foi "processado".`);
+        /**
+         * Atualiza contadores do carrinho no Header e no botão da Loja.
+         */
+        const updateCartUI = () => {
+            const headerCartCount = document.getElementById('header-cart-count'); 
+            const btnTotalItemsElement = document.getElementById('btn-total-items'); 
             
-            // Limpa o carrinho e o storage
-            cart = []; 
+            let totalItems = 0;
+            
+            cart.forEach(item => {
+                totalItems += item.quantity;
+            });
+
+            // Atualiza contadores em todos os locais
+            if (btnTotalItemsElement) {
+                btnTotalItemsElement.textContent = totalItems;
+            }
+            if (headerCartCount) {
+                headerCartCount.textContent = totalItems;
+            }
+        };
+
+        // --- Funções de Manipulação do Carrinho ---
+
+        const addToCart = (product) => {
+            const existingItem = cart.find(item => item.name === product.name);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                // Adiciona o produto completo, incluindo o URL da imagem.
+                cart.push({ 
+                    name: product.name, 
+                    price: product.price, 
+                    quantity: 1, 
+                    img: product.img 
+                }); 
+            }
+            
             saveCart();
             updateCartUI();
-        });
-    }
+        };
+        
+        // --- Configuração de Eventos ---
 
-    // Configura o botão "Ver Carrinho" (em lojaoficial.html) para NAVEGAR
-    const viewCartBtn = document.getElementById('view-cart-btn');
-    if(viewCartBtn) {
-        viewCartBtn.addEventListener('click', () => {
-             // Redireciona para a página do carrinho
-             window.location.href = 'carrinho.html';
-        });
-    }
-    
-    // Configura o Ícone do Carrinho (em ambas) para NAVEGAR
-    const navCartBtn = document.getElementById('nav-cart-btn');
-    if(navCartBtn) {
-        navCartBtn.addEventListener('click', (e) => {
-             e.preventDefault();
-             window.location.href = 'carrinho.html';
-        });
-    }
+        document.addEventListener('DOMContentLoaded', () => {
+            // Eventos de adição de produtos
+            const addButtons = document.querySelectorAll('.add-to-cart');
+            addButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const index = parseInt(button.dataset.productIndex);
+                    const product = availableProducts[index]; 
+                    
+                    if (product) {
+                        addToCart(product);
+                        // Feedback visual
+                        const originalText = button.textContent;
+                        button.textContent = '✅ ADICIONADO!';
+                        button.style.backgroundColor = 'green';
+                        
+                        setTimeout(() => {
+                            button.textContent = originalText;
+                            button.style.backgroundColor = 'var(--color-neon-yellow)';
+                        }, 800);
+                    }
+                });
+            });
 
-    // Inicializa a UI do carrinho ao carregar a página
-    updateCartUI();
-});
+            // Lógica do Menu Mobile: Toggling da classe 'open' na lista <ul>
+            const menuToggle = document.getElementById('menu-toggle');
+            const navUl = document.querySelector('nav ul'); 
+
+            if (menuToggle && navUl) {
+                menuToggle.addEventListener('click', () => {
+                    navUl.classList.toggle('open');
+                });
+            }
+
+            // Inicializa a UI do carrinho ao carregar a página
+            updateCartUI();
+        });
     </script>
 </body>
 </html>
