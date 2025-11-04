@@ -458,3 +458,180 @@ footer {
         font-size: 1.2em;
     }
 }
+.cart-page-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px; /* Limite de largura */
+    margin: 20px auto;
+}
+
+/* Coluna Esquerda - Itens (Ocupa mais espaço) */
+.cart-items-section {
+    flex: 3; /* Ocupa 3x mais espaço que o Aside */
+    min-width: 450px;
+}
+
+/* Coluna Direita - Resumo (Fixo) */
+.cart-summary-aside {
+    flex: 1; /* Ocupa 1 parte do espaço */
+    min-width: 250px;
+    max-width: 300px;
+    position: sticky; /* Mantém a caixa de resumo visível ao rolar */
+    top: 80px; /* Ajuste para descer após o header */
+}
+
+/* Título da Seção */
+.section-title {
+    font-size: 24px;
+    border-bottom: 1px solid #333; /* Linha divisória */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* --- ESTILOS DO CARD DE PRODUTO --- */
+
+.cart-item-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.item-details-left {
+    display: flex;
+    gap: 15px;
+}
+
+.item-image {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #555;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.item-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: #e6b300; /* Cor de destaque (Hexys Gold) */
+    margin-bottom: 5px;
+}
+
+.item-stock {
+    color: #4CAF50; /* Verde para 'Em estoque' */
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.item-price-unit {
+    font-size: 13px;
+    color: #999;
+}
+
+/* Controles de Quantidade e Remoção */
+.item-controls-visual {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #555;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.quantity-control .item-quantity {
+    padding: 0 10px;
+    background-color: #222;
+}
+
+.quantity-btn, .remove-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.quantity-btn:hover {
+    background-color: #555;
+}
+
+.remove-btn {
+    color: #ff4d4d; /* Cor de perigo/remoção */
+    background: none;
+    padding-left: 10px;
+}
+
+.separator {
+    color: #555;
+    margin: 0 10px;
+}
+
+/* Preço Total na Direita */
+.item-total-right {
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+}
+
+
+/* --- ESTILOS DO RESUMO LATERAL (ASIDE) --- */
+
+.summary-box {
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.subtotal-message {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.summary-total-value {
+    font-size: 24px;
+    font-weight: 900;
+    color: #e6b300; /* Destaque para o total */
+    margin-bottom: 20px;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #e6b300; /* Destaque (Hexys Gold) */
+    color: #121212;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.checkout-btn:hover:not(:disabled) {
+    background-color: #ffd700;
+}
+
+.checkout-btn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
