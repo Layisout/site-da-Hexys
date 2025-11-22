@@ -635,3 +635,105 @@ footer {
     cursor: not-allowed;
     opacity: 0.6;
 }
+
+/* --- Melhoria em styles.css (Adicionar no final ou em uma nova seção) --- */
+
+/* Novo Contêiner para Centralizar e Destacar o Box */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa a altura total da tela */
+    padding: 20px;
+    background-color: var(--color-background); /* Fundo preto/escuro */
+}
+
+/* Estilo do Box de Login/Cadastro (o "Form Card") */
+.auth-box {
+    background-color: var(--color-dark-gray); /* Fundo cinza escuro para o box */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.2); /* Sutil brilho neon para o tema LOUD */
+    width: 100%;
+    max-width: 400px; /* Limita a largura para focar o usuário */
+    text-align: center;
+    border: 1px solid var(--color-detail-yellow); /* Borda sutil */
+}
+
+/* Estilo do Título Principal */
+.auth-box h3 {
+    color: var(--color-neon-yellow);
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Estilo do Formulário */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre os campos */
+    margin-bottom: 20px;
+}
+
+/* Estilo dos Inputs */
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+    padding: 12px 15px;
+    border: 1px solid #444; /* Borda sutil */
+    border-radius: 4px;
+    background-color: #222; /* Fundo mais escuro no input */
+    color: var(--color-white);
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.auth-form input:focus {
+    border-color: var(--color-neon-yellow); /* Borda amarela ao focar */
+    box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+    outline: none;
+}
+
+/* Estilo do Botão CTA (Call to Action) */
+.cta-button {
+    background-color: var(--color-neon-yellow);
+    color: var(--color-dark-gray); /* Texto escuro no botão claro */
+    font-weight: 700;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.cta-button:hover {
+    background-color: #ffe566; /* Amarelo mais claro no hover */
+    transform: translateY(-1px); /* Efeito sutil de elevação */
+}
+
+/* Estilo dos Links Auxiliares (e.g., "Faça Login", "Cadastre-se") */
+.auth-box p {
+    font-size: 14px;
+    margin-top: 15px;
+    color: #bbb; /* Cor de texto auxiliar */
+}
+
+.auth-box a {
+    color: var(--color-neon-yellow); /* Cor do tema LOUD */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.auth-box a:hover {
+    color: #ffe566;
+    text-decoration: underline;
+}
+
+/* Esconder a nota de back-end (opcional, mas recomendado para um design mais limpo) */
+.crud-note {
+    display: none;
+}

@@ -1,19 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - E-commerce LOUD</title>
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <h3>LOGIN</h3>
-    <form class="auth-form">
-        <input type="text" placeholder="Nome de Usuário ou E-mail" required>
-        <input type="password" placeholder="Senha" required>
-        <button type="submit" class="cta-button">Entrar</button>
-    </form>
-    <p>Esqueceu sua senha? | Não tem conta? <a href="#paginacadastro">Cadastre-se</a></p>
+    <!-- O auth-container centraliza o box na tela -->
+    <div class="auth-container">
+        <!-- O auth-box é o card principal com o formulário -->
+        <div class="auth-box">
+            <h3>LOGIN</h3>
+            <form class="auth-form">
+                <input type="text" placeholder="E-mail ou Nome de Usuário" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit" class="cta-button">Entrar</button>
+            </form>
+            <!-- Link de recuperação de senha separado -->
+            <p><a href="recuperaçãosenha.html">Esqueceu sua senha?</a></p>
+            <!-- Link para cadastro -->
+            <p>Não tem conta? <a href="paginacadastro.html">Cadastre-se</a></p>
+        </div>
+    </div>
 </body>
 </html>
