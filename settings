@@ -1,0 +1,35 @@
+# settings.py (Apenas trechos importantes)
+
+import os
+# Certifique-se de que a variável BASE_DIR está configurada corretamente:
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # Corrigido __file__
+
+# ...
+
+INSTALLED_APPS = [
+    # ... apps padrão do Django ...
+    # Meu App (Adicionar aqui!)
+    'core', 
+]
+
+# ...
+
+# Configuração de Autenticação (Adicionar ou substituir)
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_ACTIVATION_REQUIRED = False
+
+# Configuração de Templates (Modificar a seção DIRS)
+TEMPLATES = [
+    {
+        # ...
+        'DIRS': [os.path.join(BASE_DIR, 'core/templates')], # Esta linha é crucial!
+        # ...
+    },
+]
+
+# Configuração de Arquivos Estáticos (Static Files) (Adicionar ou substituir)
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'core/static'), # Esta linha é crucial para o styles.css
+]
