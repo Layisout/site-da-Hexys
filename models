@@ -1,0 +1,21 @@
+# core/models.py
+from django.db import models
+
+class Match(models.Model):
+    # ... (código completo da classe Match) ...
+    class Meta:
+        verbose_name = "Partida"
+        verbose_name_plural = "Partidas"
+        ordering = ['match_date', 'match_time']
+
+    def __str__(self): # Corrigido de _str_ para __str__
+        return f"{self.team_a} vs {self.team_b} ({self.stage})"
+
+class Product(models.Model):
+    # ... (código completo da classe Product) ...
+    class Meta:
+        verbose_name = "Produto"
+        verbose_name_plural = "Produtos"
+
+    def __str__(self): # Corrigido de _str_ para __str__
+        return self.name
