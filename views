@@ -1,0 +1,26 @@
+# core/views.py
+from django.shortcuts import render
+# ... (outros imports) ...
+from .models import Match, Product
+
+# View para a página inicial (index2.html -> renderizado como index.html no código)
+def index_view(request):
+    # ... (código completo da função index_view) ...
+
+# View para a página da loja (lojaoficial.html)
+def store_view(request):
+    # ... (código completo da função store_view) ...
+
+# View para a página do carrinho (carrinho.html)
+def cart_view(request):
+    # ... (código completo da função cart_view) ...
+
+# --- Views de Autenticação ---
+class CustomLoginView(LoginView):
+    template_name = 'core/login.html' # template corrigido
+
+class RegisterView(CreateView):
+    # ... (código completo da classe RegisterView) ...
+
+def password_reset_request_view(request):
+    return render(request, 'core/recuperar_senha.html') # template corrigido
