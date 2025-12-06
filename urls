@@ -5,13 +5,13 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     # Páginas Principais
-    path('', views.index_view, name='index'), 
-    path('loja/', views.store_view, name='store'), 
-    path('carrinho/', views.cart_view, name='cart'), 
+    path('', views.index_view, name='index2'), 
+    path('loja/', views.store_view, name='lojaoficial'), 
+    path('carrinho/', views.cart_view, name='carrinho'), 
     
     # Autenticação
-    path('login/', views.CustomLoginView.as_view(), name='login'), 
-    path('logout/', auth_views.LogoutView.as_view(next_page='index'), name='logout'),
-    path('cadastro/', views.RegisterView.as_view(), name='register'), 
-    path('recuperar-senha/', views.password_reset_request_view, name='password_reset'), 
+    path('login/', views.CustomLoginView.as_view(), name='paginalogin'), 
+    path('logout/', auth_views.LogoutView.as_view(next_page='index2'), name='logout'),
+    path('cadastro/', views.RegisterView.as_view(), name='paginacadastro'), 
+    path('recuperar-senha/', views.password_reset_request_view, name='recuperar_senha'), 
 ]
