@@ -1,3 +1,34 @@
+// server.js (Conceitual)
+
+const db = require('./db_connection_module'); // Módulo de conexão
+
+// Função que executa o comando SQL
+async function setupDatabase() {
+    const createTableQuery = `
+        CREATE TABLE Usuarios (
+            Id INT IDENTITY(1,1) PRIMARY KEY,
+            NomeUsuario NVARCHAR(100) NOT NULL,
+            Email NVARCHAR(255) NOT NULL UNIQUE,
+            SenhaHash NVARCHAR(255) NOT NULL,
+            DataCadastro DATETIME NOT NULL DEFAULT GETDATE()
+        );
+    `;
+    
+    try {
+        await db.execute(createTableQuery); // Executa o SQL no BD
+        console.log("Tabela 'Usuarios' criada com sucesso!");
+    } catch (error) {
+        // Se a tabela já existir, a execução irá falhar, o que é esperado após a primeira vez.
+        // Você pode ignorar erros de "tabela já existe" aqui.
+        console.error("Erro ao criar tabela Usuarios (Pode ser que ela já exista):", error.message);
+    }
+}
+
+// Chame esta função antes de iniciar o servidor, mas apenas uma vez
+// setupDatabase(); 
+
+// ... Início do servidor e rotas (como a rota /api/matches) ...
+
 // URL do seu servidor backend (onde roda o server.js)
 const API_MATCHES_URL = 'http://localhost:3000/api/matches';
 
