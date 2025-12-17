@@ -62,66 +62,47 @@
     </main>
     
     <script>
-        // --- 1. VARIÁVEIS DE CONFIGURAÇÃO E ESTADO ---
-        
-        // Chave para armazenamento no LocalStorage
+
         const CART_STORAGE_KEY = 'hexysCart';
-    
-        // Estado do Carrinho (Tenta carregar do LocalStorage ou inicia vazio)
+
         let cart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || [];
     
-        // Mapeamento dos produtos disponíveis na loja (Mantenha este array em todas as páginas que adicionam ao carrinho)
         const availableProducts = [
             { name: "Camisa Oficial Pro - 2025", price: 149.90 },
             { name: "Mousepad Hexys Neon", price: 79.90 },
             { name: "Moletom Team Edition", price: 229.90 }
         ];
     
-        // --- 2. FUNÇÕES DE UTILIDADE ---
-    
-        // Função para salvar o estado atual do carrinho no LocalStorage
         const saveCart = () => {
             localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
         };
-    
-        // Função para formatar o preço em moeda BRL (Reais)
+
         const formatPrice = (price) => {
-            // Garante que o número seja tratado corretamente antes da formatação
             const number = typeof price === 'string' ? parseFloat(price.replace('R$', '').replace('.', '').replace(',', '.')) : price;
             return number.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         };
     
-        // --- 3. FUNÇÕES DE RENDERIZAÇÃO E ATUALIZAÇÃO DA UI ---
-    
-        /**
-         * Atualiza toda a interface do carrinho (lista de itens, resumo e contadores).
-         */
         const updateCartUI = () => {
-            // Elementos do Carrinho
             const cartItemsContainer = document.getElementById('cart-items');
             const cartTotalElement = document.getElementById('cart-total');
             const totalItemsElement = document.getElementById('total-items');
             const checkoutButton = document.getElementById('checkout-btn');
-            // Elementos de Contagem no Header
             const headerCartCount = document.getElementById('header-cart-count'); 
             
             let total = 0;
             let totalItems = 0;
             
-            // A. Calcular totais
             cart.forEach(item => {
                 total += item.price * item.quantity;
                 totalItems += item.quantity;
             });
     
-            // B. Atualizar contadores globais (header)
             if (headerCartCount) {
                 headerCartCount.textContent = totalItems;
             }
     
-            // C. Renderizar lista de itens e resumo (Apenas se os elementos do 'main' existirem, ex: em carrinho.html)
             if (cartItemsContainer) {
-                cartItemsContainer.innerHTML = ''; // Limpa os itens atuais
+                cartItemsContainer.innerHTML = '';
     
                 if (cart.length === 0) {
                     cartItemsContainer.innerHTML = '<p class="empty-cart-message">Seu carrinho está vazio.</p>';
@@ -130,8 +111,7 @@
                     cart.forEach((item, index) => {
                         const itemTotal = item.price * item.quantity;
                         const cartItemDiv = document.createElement('div');
-                        
-                        // Utiliza a nova classe para o visual de card
+
                         cartItemDiv.classList.add('cart-item-card'); 
                         
                         cartItemDiv.innerHTML = `
@@ -163,15 +143,12 @@
                     });
                     if (checkoutButton) checkoutButton.disabled = false;
                 }
-    
-                // Atualiza o resumo
+
                 if (cartTotalElement) cartTotalElement.textContent = formatPrice(total);
                 if (totalItemsElement) totalItemsElement.textContent = totalItems;
             }
         };
-    
-        // --- 4. FUNÇÕES DE MANIPULAÇÃO DO CARRINHO ---
-    
+
         const addToCart = (product) => {
             const existingItem = cart.find(item => item.name === product.name);
     
@@ -185,15 +162,13 @@
             updateCartUI();
         };
     
-        const updateQuantity = (index, action) => {
-            // Verifica se o índice é válido e se o item existe
+        const updateQuantity = (index, action) => { 
             if (index >= 0 && index < cart.length) {
                 if (action === 'increment') {
                     cart[index].quantity += 1;
                 } else if (action === 'decrement') {
                     cart[index].quantity -= 1;
                     if (cart[index].quantity <= 0) {
-                        // Remove o item se a quantidade chegar a zero ou menos
                         cart.splice(index, 1);
                     }
                 }
@@ -210,20 +185,15 @@
             updateCartUI();
         };
     
-        // --- 5. CONFIGURAÇÃO DE EVENTOS (DOM CONTENT LOADED) ---
-    
         document.addEventListener('DOMContentLoaded', () => {
-            // Eventos de adição de produtos (Botões 'add-to-cart' que estariam na página da Loja)
             const addButtons = document.querySelectorAll('.add-to-cart');
             addButtons.forEach((button, index) => {
                 button.addEventListener('click', () => {
-                    // Assume que a ordem dos botões corresponde à ordem em availableProducts
                     const product = availableProducts[index]; 
                     addToCart(product);
                 });
             });
     
-            // Eventos de manipulação de quantidade/remoção (No Container do Carrinho)
             const cartItemsContainer = document.getElementById('cart-items');
             if (cartItemsContainer) {
                 cartItemsContainer.addEventListener('click', (event) => {
@@ -242,32 +212,27 @@
                     }
                 });
             }
-    
-            // Evento Finalizar Compra
+
             const checkoutButton = document.getElementById('checkout-btn');
             if(checkoutButton) {
                 checkoutButton.addEventListener('click', () => {
                     const totalText = document.getElementById('cart-total').textContent;
                     alert(`✅ Finalização de Compra Simulada:\nObrigado! Seu pedido no valor de ${totalText} foi "processado".`);
                     
-                    // Limpa o carrinho e o storage após a simulação
                     cart = []; 
                     saveCart();
                     updateCartUI();
                 });
             }
-    
-            // Configura o Ícone do Carrinho (nav-cart-btn) para NAVEGAR
+
             const navCartBtn = document.getElementById('nav-cart-btn');
             if(navCartBtn) {
                 navCartBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    // Redireciona para a página onde o HTML de carrinho está visível
                     window.location.href = 'carrinho.html'; 
                 });
             }
     
-            // Inicializa a UI do carrinho ao carregar a página
             updateCartUI();
         });
     </script>
