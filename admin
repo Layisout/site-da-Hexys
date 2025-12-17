@@ -4,8 +4,6 @@ from .models import Match, Product
 
 @admin.register(Match)
 class MatchAdmin(admin.ModelAdmin):
-    # ... (código completo da classe MatchAdmin) ...
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    # ... (código completo da classe ProductAdmin) ...
