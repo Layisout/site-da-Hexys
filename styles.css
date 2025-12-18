@@ -737,3 +737,91 @@ footer {
 .crud-note {
     display: none;
 }
+
+
+/*** tela time **/
+
+/* Container Principal: Usa Flexbox para dispor as cartas horizontalmente */
+.team-roster {
+    display: flex;
+    justify-content: center; /* Centraliza a lista na tela */
+    gap: 10px; /* Espaçamento entre os membros */
+    padding: 20px 0;
+    overflow-x: auto; /* Permite rolagem horizontal em telas pequenas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cartão Individual do Membro */
+.member-card {
+    display: flex;
+    flex-direction: column;
+    /* Ajuste de Largura: Garante que todos tenham a mesma largura e não sejam muito grandes */
+    width: 200px; /* Largura padrão para desktop */
+    min-width: 150px; /* Largura mínima para telas menores */
+    position: relative;
+    /* O fundo da foto é branco, o que é replicado pela cor de fundo do .team-roster */
+}
+
+/* Container da Foto (Onde a mágica do background branco e alinhamento vertical acontece) */
+.member-photo-container {
+    /* Ocupa a maior parte do espaço, empurrando o texto para baixo */
+    flex-grow: 1; 
+    display: flex;
+    align-items: flex-end; /* A imagem na sua foto vai até a borda inferior, mas a técnica é complexa. */
+    overflow: hidden; /* Garante que a imagem não "vaze" */
+}
+
+/* Imagem do Membro */
+.member-photo {
+    width: 100%; /* Faz a imagem preencher a largura do container */
+    height: auto;
+    /* NOTA: Para simular o "corte" da foto original, a imagem real teria que ser cortada */
+    /* ou usar 'object-fit: cover;' e 'height: 100%' para garantir que ela preencha o container do .member-photo-container */
+    display: block;
+}
+
+/* Nome do Membro */
+.member-name {
+    margin: 0;
+    padding: 5px 0;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: left; 
+    color: #ffffff;
+    text-transform: uppercase;
+    
+    /* Na imagem original, o texto é branco/cinza, mas vou manter preto para melhor visibilidade */
+    /* Para replicar o fundo da foto original, defina o fundo do cartão com a cor da borda inferior da foto. */
+}
+
+.timetitulo h3 {
+    color: var(--color-neon-yellow);
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: 900;
+}
+
+/* Links de Mídias Sociais */
+.member-social {
+    display: flex;
+    gap: 5px;
+    padding-bottom: 5px; /* Pequeno espaçamento abaixo dos ícones */
+}
+
+.member-social a {
+    color: #000; /* Cor dos ícones */
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+/* Media Query para Responsividade em telas menores */
+@media (max-width: 768px) {
+    .team-roster {
+        /* Remove o 'gap' ou use um menor se a rolagem horizontal for preferida */
+        /* display: block; ou flex-wrap: wrap; para empilhar, mas o estilo original é horizontal */
+    }
+    .member-card {
+        width: 140px; /* Diminui um pouco o tamanho do cartão */
+        min-width: 140px;
+    }
+}
