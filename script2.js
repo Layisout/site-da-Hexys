@@ -1,15 +1,34 @@
 const db = require('./db_connection_module');
 
 async function setupDatabase() {
-    const createTableQuery = `
-        CREATE TABLE Usuarios (
-            Id INT IDENTITY(1,1) PRIMARY KEY,
-            NomeUsuario NVARCHAR(100) NOT NULL,
-            Email NVARCHAR(255) NOT NULL UNIQUE,
-            SenhaHash NVARCHAR(255) NOT NULL,
-            DataCadastro DATETIME NOT NULL DEFAULT GETDATE()
-        );
-    `;
+    const createTableQuery = 
+` CREATE DATABASE IF NOT EXISTS hexys_esports;
+USE hexys_esports;
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha_hash VARCHAR(255) NOT NULL,
+    tipo_usuario ENUM('admin', 'cliente') DEFAULT 'cliente',
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    preco DECIMAL(10, 2) NOT NULL,
+    estoque INT DEFAULT 0,
+    imagem_url VARCHAR(255)
+);
+
+CREATE TABLE partidas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    time_a VARCHAR(50) NOT NULL,
+    time_b VARCHAR(50) NOT NULL,
+    data_hora DATETIME NOT NULL,
+    resultado VARCHAR(20) DEFAULT 'A definir'
+);`;
     
     try {
         await db.execute(createTableQuery);
@@ -81,4 +100,7 @@ function updateCartUI() {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadAgenda();
+ 
 });
+
+
