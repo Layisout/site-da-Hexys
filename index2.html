@@ -43,52 +43,60 @@
             <div class="cards-container">
                 <div class="info-card">
                     <h4>Modalidades</h4>
-                    <p>Clash Royale (melhor de 3) - Counter-Strike (saldo de rounds) - (Valorant saldo de rounds)</p>
+                    <p>Clash Royale (melhor de 3) - Counter-Strike (saldo de rounds) - Valorant (saldo de rounds)</p>
                 </div>
                 <div class="info-card">
                     <h4>Data</h4>
-                    <p>25 a 27 de Novembro</p>
+                    <p>Primeiras semanas de Janeiro</p>
                 </div>
                 <div class="info-card">
-                    <h4>Prêmio Total</h4>
-                    <p>10 pontos extras na matéria de Matheus</p>
+                    <h4>Prêmio</h4>
+                    <p>10 pontos extras nas matérias de Matheus</p>
                 </div>
             </div>
     </section>
 
-    <section id="noticias" class="news-section">
-        <h3>ÚLTIMAS NOTÍCIAS</h3>
-        <div class="news-grid">
-            <div class="news-card">
-                <h4>Hexys Anuncia Nova Lineup de Valorant</h4>
-                <p>A equipe de Valorant da Hexys se reformula para a próxima temporada, trazendo três novos talentos...</p>
-                <a href="#">Ler mais »</a>
-            </div>
-            <div class="news-card">
-                <h4>Agenda Confirmada para as Finais de Clash Royale</h4>
-                <p>Confira as datas e horários dos confrontos decisivos do torneio. Quem levará a coroa?</p>
-                <a href="#">Ler mais »</a>
-            </div>
-            <div class="news-card">
-                <h4>Patrocínio Fechado com Gigante de Tecnologia</h4>
-                <p>Um novo parceiro de peso se junta à Hexys, impulsionando a equipe para novos horizontes...</p>
-                <a href="#">Ler mais »</a>
-            </div>
-        </div>
-    </section>
+    <section id="noticias" class="info-section">
+  <h3>ÚLTIMAS NOTÍCIAS</h3>
 
-    <section id="agenda" class="agenda-section">
-            <h3>AGENDA DO TORNEIO</h3>
-            <ul id="match-list">
-        </ul>
-        <p class="crud-note">**CRUD de Partidas: (Funcionalidade de back-end: O administrador adiciona, edita ou deleta partidas aqui.)**</p>
-    </section>
+  <div class="news-grid">
 
-    <section id="transmissao" class="live-section">
+    <div class="news-card">
+      <h4>Hexys Anuncia Nova Lineup de Valorant?</h4>
+      <p>A equipe da Hexys se reformula para a próxima temporada, trazendo novos talentos...</p>
+      <a href="#" onclick="openModal(
+        'Hexys Anuncia Nova Lineup de Valorant?',
+        'A equipe da Hexys se reformula para a próxima temporada, trazendo três novos talentos para fortalecer a equipe e buscar grandes resultados em 2026. Como sabem, em 2025, nossa equipe preferida optou por competir unicamente na modalidade Clash Royale, porém em 2026 o membro mais jovem da equipe prometeu se aventurar no mundo de Valorant. Torçam por ele!'
+      )">Ler mais »</a>
+    </div>
+
+    <div class="news-card">
+      <h4>Agenda Confirmada para as Finais de Clash Royale</h4>
+      <p>Confira as datas e horários dos confrontos decisivos do torneio...</p>
+      <a href="#" onclick="openModal(
+        'Agenda Confirmada para as Finais de Clash Royale',
+        'As finais de Clash Royale já têm data marcada. As equipes se enfrentam em partidas decisivas que prometem fortes emoções nos primeiros dias de janeiro.'
+      )">Ler mais »</a>
+    </div>
+
+    <div class="news-card">
+      <h4>Patrocínio Fechado com Gigante de Tecnologia</h4>
+      <p>Um novo parceiro de peso se junta à Hexys...</p>
+      <a href="#" onclick="openModal(
+        'Patrocínio Fechado com Gigante de Tecnologia',
+        'A Hexys anuncia um novo patrocínio com uma gigante do setor tecnológico, impulsionando a equipe para novos horizontes. Esse gigante é, obviamente, Matheus Loppes.'
+      )">Ler mais »</a>
+    </div>
+
+  </div>
+</section>
+
+
+    <section id="transmissao" class="info-section">
         <h3>TRANSMISSÃO AO VIVO</h3>
         <div class="live-stream-container">
             <div class="video-placeholder">
-                <p>LIVE OFFLINE | Próxima Transmissão: 25/11 às 18:00 BRT</p>
+                <p>LIVE OFFLINE | Próxima Transmissão: indefinido</p>
             </div>
         </div>
         <p class="crud-note">**Integração: (Requer API de streaming para exibir o player em tempo real.)**</p>
@@ -101,5 +109,27 @@
 </footer>
 
 <script src="script2.js"></script>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <h2 id="modal-title"></h2>
+    <p id="modal-text"></p>
+  </div>
+</div>
+
+<script>
+function openModal(title, text) {
+  document.getElementById("modal-title").innerText = title;
+  document.getElementById("modal-text").innerText = text;
+  document.getElementById("modal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+
+
+
 </body>
 </html>

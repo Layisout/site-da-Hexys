@@ -42,13 +42,14 @@ header {
 .logo-header {
     height: 40px; /* Ajuste o tamanho da logo */
     margin-right: 15px;
-    filter: drop-shadow(0 0 5px var(--color-neon-yellow)); /* Efeito de brilho */
+    
 }
 
 .team-name {
     font-size: 1.5em;
     font-weight: 900;
     color: var(--color-white);
+    filter: drop-shadow(0 0 5px var(--color-neon-yellow)); /* Efeito de brilho */
 }
 
 nav ul {
@@ -824,4 +825,37 @@ footer {
         width: 140px; /* Diminui um pouco o tamanho do cartão */
         min-width: 140px;
     }
+}
+
+/***noticias***/
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 999;
+}
+
+.modal-content {
+  background: #0f0f0f;
+  color: #fff;
+  max-width: 600px;
+  margin: 10% auto;
+  padding: 25px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.modal-content h2 {
+  color: #f5c400;
+  margin-bottom: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 26px;
+  cursor: pointer;
 }
